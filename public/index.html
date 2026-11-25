@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Story Studio тАФ Secure AI Image Creator</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Story Studio — Secure AI Image Creator</title>
 <style>
 :root{--bg:#100d1c;--card:#1c1730;--line:#3a3155;--pink:#ff5d9e;--text:#fff;--muted:#c8bfd9}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(140deg,#171127,#0b1725);color:var(--text);font:16px system-ui,Arial}
@@ -24,105 +24,105 @@ progress{width:100%;height:12px;display:none;accent-color:var(--pink)}
 a{color:#ffb6d2}footer{text-align:center;color:var(--muted);padding:20px;font-size:13px}
 </style></head>
 <body>
-<header><h1>ЁЯМ╣ My Story Studio</h1><p>рджреЛ reference photos рд╕реЗ рдХрд╣рд╛рдиреА рдХреЗ рдЕрд▓рдЧ-рдЕрд▓рдЧ cinematic scenes рдмрдирд╛рдЗрдП</p></header>
+<header><h1>🌹 My Story Studio</h1><p>दो reference photos से कहानी के अलग-अलग cinematic scenes बनाइए</p></header>
 <main>
 <section class="card">
 <h2>1. Character Reference Photos</h2>
 <div class="grid">
-<div><label>рд▓рдбрд╝рдХреЗ рдХреА рдлреЛрдЯреЛ</label><input id="boy" type="file" accept="image/png,image/jpeg,image/webp"><img id="boyPrev" class="preview" alt="Boy reference preview"></div>
-<div><label>рд▓рдбрд╝рдХреА рдХреА рдлреЛрдЯреЛ</label><input id="girl" type="file" accept="image/png,image/jpeg,image/webp"><img id="girlPrev" class="preview" alt="Girl reference preview"></div>
+<div><label>लड़के की फोटो</label><input id="boy" type="file" accept="image/png,image/jpeg,image/webp"><img id="boyPrev" class="preview" alt="Boy reference preview"></div>
+<div><label>लड़की की फोटो</label><input id="girl" type="file" accept="image/png,image/jpeg,image/webp"><img id="girlPrev" class="preview" alt="Girl reference preview"></div>
 </div>
-<p class="small">рдпреЗ рдлреЛрдЯреЛ рдЗрд╕реА рдмреНрд░рд╛рдЙрдЬрд╝рд░ рдореЗрдВ рд╕реЗрд╡ рд░рд╣реЗрдВрдЧреАред рд╣рд░ scene рдХреЗ рд╕рд╛рде server рдХреЛ рднреЗрдЬреА рдЬрд╛рдПрдБрдЧреАред рд╕рд╛рдл, рд╕рд╛рдордиреЗ рд╕реЗ рд▓реА рдЧрдИ рдлреЛрдЯреЛ рдмреЗрд╣рддрд░ рд░рд╣рддреА рд╣реИред рдлреЛрдЯреЛ 12 MB рд╕реЗ рдХрдо рд░рдЦреЗрдВред</p>
-<div class="row"><button class="secondary" id="saveRefs">рдлреЛрдЯреЛ рдЗрд╕ рдореЛрдмрд╛рдЗрд▓ рдореЗрдВ рд╕реЗрд╡ рдХрд░реЗрдВ</button><button class="danger" id="clearRefs">рд╕реЗрд╡ рдлреЛрдЯреЛ рд╣рдЯрд╛рдПрдБ</button></div>
-<div class="small" id="refStatus">рдЕрднреА reference photos рд╕реЗрд╡ рдирд╣реАрдВ рд╣реИрдВред</div>
+<p class="small">ये फोटो इसी ब्राउज़र में सेव रहेंगी। हर scene के साथ server को भेजी जाएँगी। साफ, सामने से ली गई फोटो बेहतर रहती है। फोटो 12 MB से कम रखें।</p>
+<div class="row"><button class="secondary" id="saveRefs">फोटो इस मोबाइल में सेव करें</button><button class="danger" id="clearRefs">सेव फोटो हटाएँ</button></div>
+<div class="small" id="refStatus">अभी reference photos सेव नहीं हैं।</div>
 </section>
 
 <section class="card">
 <h2>2. Image Settings</h2>
 <div class="grid">
-<div><label>AI Model</label><select id="model"><option value="gpt-image-2.6-flare">GPT Image 2.6 Flare тАФ рддреЗрдЬрд╝</option><option value="gpt-image-2.6-sunburst">GPT Image 2.6 Sunburst тАФ рд╡рд┐рд╕реНрддреГрдд</option><option value="gpt-image-2.5-flare">GPT Image 2.5 Flare</option><option value="gpt-image-2.5-sunburst">GPT Image 2.5 Sunburst</option></select></div>
+<div><label>AI Model</label><select id="model"><option value="gpt-image-2.6-flare">GPT Image 2.6 Flare — तेज़</option><option value="gpt-image-2.6-sunburst">GPT Image 2.6 Sunburst — विस्तृत</option><option value="gpt-image-2.5-flare">GPT Image 2.5 Flare</option><option value="gpt-image-2.5-sunburst">GPT Image 2.5 Sunburst</option></select></div>
 <div><label>Quality</label><select id="quality"><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
-<div><label>Image Size</label><select id="size"><option value="1536x1024">Landscape тАФ 16:10 approx.</option><option value="1024x1024">Square</option><option value="1024x1536">Portrait</option></select></div>
+<div><label>Image Size</label><select id="size"><option value="1536x1024">Landscape — 16:10 approx.</option><option value="1024x1024">Square</option><option value="1024x1536">Portrait</option></select></div>
 </div>
-<p class="small">API Key рдЗрд╕ HTML рдореЗрдВ рдирд╣реАрдВ рд░рдЦреА рдЬрд╛рддреАред рдЗрд╕реЗ рдХреЗрд╡рд▓ hosting server рдХреА Environment Variable <b>OPENAI_API_KEY</b> рдореЗрдВ рдбрд╛рд▓рдирд╛ рд╣реИред</p>
+<p class="small">API Key इस HTML में नहीं रखी जाती। इसे केवल hosting server की Environment Variable <b>OPENAI_API_KEY</b> में डालना है।</p>
 </section>
 
 <section class="card">
 <h2>3. Story Scenes</h2>
-<label>рдХрд╣рд╛рдиреА рдХрд╛ рдирд╛рдо</label><input id="storyTitle" value="рддреЗрд░реА рдЖрдБрдЦреЛрдВ рдореЗрдВ рдЬреЛ рджреЗрдЦрд╛" style="width:100%;padding:11px;border-radius:10px;background:#100d1c;color:white;border:1px solid #3a3155">
-<p class="small">рдиреАрдЪреЗ 20 sample romantic scenes рджрд┐рдП рд╣реИрдВред рд╣рд░ scene рдХрд╛ prompt рдмрджрд▓ рд╕рдХрддреЗ рд╣реИрдВред</p>
+<label>कहानी का नाम</label><input id="storyTitle" value="तेरी आँखों में जो देखा" style="width:100%;padding:11px;border-radius:10px;background:#100d1c;color:white;border:1px solid #3a3155">
+<p class="small">नीचे 20 sample romantic scenes दिए हैं। हर scene का prompt बदल सकते हैं।</p>
 <div id="scenes"></div>
-<div class="row"><button class="secondary" id="addScene">+ рдирдпрд╛ Scene рдЬреЛрдбрд╝реЗрдВ</button><button id="generateAll">рд╕рднреА Scene рдмрдирд╛рдПрдВ</button></div>
-<progress id="progress" max="20" value="0"></progress><div class="status" id="status">рдкрд╣рд▓реЗ рджреЛрдиреЛрдВ reference photos рд╕реЗрд╡ рдХрд░реЗрдВ, рдлрд┐рд░ scene generate рдХрд░реЗрдВред</div>
+<div class="row"><button class="secondary" id="addScene">+ नया Scene जोड़ें</button><button id="generateAll">सभी Scene बनाएं</button></div>
+<progress id="progress" max="20" value="0"></progress><div class="status" id="status">पहले दोनों reference photos सेव करें, फिर scene generate करें।</div>
 </section>
 
 <section class="card">
 <h2>4. Generated Image</h2>
 <div id="resultTitle" class="small"></div><img id="result" class="result" alt="Generated scene">
-<div class="row"><button id="download" class="secondary" disabled>рдЗрдореЗрдЬ рдбрд╛рдЙрдирд▓реЛрдб рдХрд░реЗрдВ</button></div>
+<div class="row"><button id="download" class="secondary" disabled>इमेज डाउनलोड करें</button></div>
 </section>
-<footer>My Story Studio тАв рдЖрдкрдХреА API Key server рдкрд░ рд░рд╣рддреА рд╣реИ, browser рдореЗрдВ рдирд╣реАрдВред API usage рдХреЗ рд▓рд┐рдП OpenAI billing рд▓рд╛рдЧреВ рд╣реЛрдЧреАред</footer>
+<footer>My Story Studio • आपकी API Key server पर रहती है, browser में नहीं। API usage के लिए OpenAI billing लागू होगी।</footer>
 </main>
 <script>
 const defaults = [
-"рдПрдХ рд╕реБрдВрджрд░ рднрд╛рд░рддреАрдп рдпреБрд╡рд╛ рд╡рдпрд╕реНрдХ рдЬреЛрдбрд╝рд╛ рд╣рд░реЗ-рднрд░реЗ рд░реЛрдорд╛рдВрдЯрд┐рдХ рдмрдЧреАрдЪреЗ рдореЗрдВ рдЖрдордиреЗ-рд╕рд╛рдордиреЗ рдЦрдбрд╝рд╛ рд╣реИред рд▓рдбрд╝рдХрд╛ рд▓рдбрд╝рдХреА рдХреА рдЖрдБрдЦреЛрдВ рдореЗрдВ рдкреНрдпрд╛рд░ рд╕реЗ рджреЗрдЦ рд░рд╣рд╛ рд╣реИ, рд╕реБрдирд╣рд░реА рд╕реБрдмрд╣ рдХреА рд░реЛрд╢рдиреА, cinematic photorealistic scene.",
-"рджреЛрдиреЛрдВ рдмрд╛рд░рд┐рд╢ рдореЗрдВ рдПрдХ рдЫрддрд░реА рдХреЗ рдиреАрдЪреЗ рдХрд░реАрдм рдЦрдбрд╝реЗ рд╣реИрдВ, рд╣рд▓реНрдХреА рдореБрд╕реНрдХрд╛рди, рд╕рдбрд╝рдХ рдкрд░ рдкрд╛рдиреА рдХреА рдЪрдордХ рдФрд░ рд╢рд╣рд░ рдХреА рд░реЛрд╢рдиреА, romantic cinematic photography.",
-"рд▓рдбрд╝рдХрд╛ рд▓рдбрд╝рдХреА рдХреЛ рдЧреБрд▓рд╛рдм рджреЗ рд░рд╣рд╛ рд╣реИ, рд▓рдбрд╝рдХреА рд╢рд░реНрдорд╛рдХрд░ рдореБрд╕реНрдХреБрд░рд╛ рд░рд╣реА рд╣реИ, рдлреВрд▓реЛрдВ рд╕реЗ рд╕рдЬрд╛ рдмрдЧреАрдЪрд╛, soft golden-hour lighting.",
-"рджреЛрдиреЛрдВ рдЭреАрд▓ рдХреЗ рдХрд┐рдирд╛рд░реЗ рд╕рд╛рде рдЪрд▓ рд░рд╣реЗ рд╣реИрдВ, рдкрд╛рдиреА рдореЗрдВ рдкрд╣рд╛рдбрд╝реЛрдВ рдХрд╛ рдкреНрд░рддрд┐рдмрд┐рдВрдм, рд╣рд╡рд╛ рдореЗрдВ рдЙрдбрд╝рддреЗ рдмрд╛рд▓, wide cinematic shot.",
-"рд▓рдбрд╝рдХреА рдмрд╛рд▓рдХрдиреА рдореЗрдВ рдЦрдбрд╝реА рд╣реИ рдФрд░ рд▓рдбрд╝рдХрд╛ рдиреАрдЪреЗ рд╕реЗ рдЙрд╕реЗ рджреЗрдЦрдХрд░ рдореБрд╕реНрдХреБрд░рд╛ рд░рд╣рд╛ рд╣реИ, рд╢рд╛рдо рдХрд╛ рдЖрд╕рдорд╛рди, warm romantic mood.",
-"рджреЛрдиреЛрдВ рд╕рдореБрджреНрд░ рдХрд┐рдирд╛рд░реЗ рд╕реВрд░реНрдпрд╛рд╕реНрдд рджреЗрдЦ рд░рд╣реЗ рд╣реИрдВ, рд▓рд╣рд░реЗрдВ рдкреИрд░реЛрдВ рдХреЛ рдЫреВ рд░рд╣реА рд╣реИрдВ, рдкреАрдЫреЗ рдирд╛рд░рдВрдЧреА рдЖрд╕рдорд╛рди, cinematic wide shot.",
-"рд▓рдбрд╝рдХрд╛ рд▓рдбрд╝рдХреА рдХреЗ рдмрд╛рд▓реЛрдВ рдореЗрдВ рдлреВрд▓ рд▓рдЧрд╛ рд░рд╣рд╛ рд╣реИ, рджреЛрдиреЛрдВ рдХреЗ рдЪреЗрд╣рд░реЗ рдкрд░ рдХреЛрдорд▓ рдореБрд╕реНрдХрд╛рди, рдлреВрд▓реЛрдВ рдХрд╛ рд╕реБрдВрджрд░ close-up.",
-"рджреЛрдиреЛрдВ рдкрд╣рд╛рдбрд╝реА рд░рд╛рд╕реНрддреЗ рдкрд░ рд╣рд╛рде рдкрдХрдбрд╝рдХрд░ рдЪрд▓ рд░рд╣реЗ рд╣реИрдВ, рдзреБрдВрдзрд▓реЗ рдкрд╣рд╛рдбрд╝ рдФрд░ рдмрд╛рджрд▓, dreamy travel scene.",
-"рд░рд╛рдд рдореЗрдВ рдЫрдд рдкрд░ рджреЛрдиреЛрдВ рддрд╛рд░реЛрдВ рднрд░реЗ рдЖрд╕рдорд╛рди рдХреЗ рдиреАрдЪреЗ рдмреИрдареЗ рд╣реИрдВ, рд╣рд▓реНрдХреА fairy lights, рд╢рд╛рдВрдд рдФрд░ рдкреНрдпрд╛рд░рд╛ рдкрд▓.",
-"рд▓рдбрд╝рдХреА рдкрд┐рдпрд╛рдиреЛ рдмрдЬрд╛ рд░рд╣реА рд╣реИ рдФрд░ рд▓рдбрд╝рдХрд╛ рдкрд╛рд╕ рдмреИрдардХрд░ рд╕реБрди рд░рд╣рд╛ рд╣реИ, elegant indoor setting, warm light.",
-"рджреЛрдиреЛрдВ рд░рдВрдЧ-рдмрд┐рд░рдВрдЧреЗ рдлреВрд▓реЛрдВ рдХреЗ рдмреАрдЪ рд╣рдБрд╕рддреЗ рд╣реБрдП рджреМрдбрд╝ рд░рд╣реЗ рд╣реИрдВ, рд╣рд╡рд╛ рдореЗрдВ рдлреВрд▓реЛрдВ рдХреА рдкрдВрдЦреБрдбрд╝рд┐рдпрд╛рдБ, joyful cinematic motion.",
-"рд▓рдбрд╝рдХрд╛ рд▓рдбрд╝рдХреА рдХреЛ рдорд╛рдереЗ рдкрд░ рдкреНрдпрд╛рд░ рд╕реЗ рдЪреВрдо рд░рд╣рд╛ рд╣реИ, рд╕реБрдВрджрд░ рдмрдЧреАрдЪрд╛, respectful tender romantic moment.",
-"рджреЛрдиреЛрдВ рдкреБрд░рд╛рдиреА рд╕рдбрд╝рдХ рдкрд░ vintage рдХрд╛рд░ рдХреЗ рдкрд╛рд╕ рдЦрдбрд╝реЗ рд╣реИрдВ, рд╢рд╛рдо рдХреА рд░реЛрд╢рдиреА, classic Bollywood romance mood.",
-"рд▓рдбрд╝рдХреА рдирджреА рдХрд┐рдирд╛рд░реЗ рдмреИрдареА рд╣реИ рдФрд░ рд▓рдбрд╝рдХрд╛ рдЙрд╕рдХреЗ рдкрд╛рд╕ рдмреИрдардХрд░ рдЙрд╕рдХрд╛ рд╣рд╛рде рдерд╛рдореЗ рд╣реИ, рд╢рд╛рдВрдд рдкреНрд░рд╛рдХреГрддрд┐рдХ рджреГрд╢реНрдп.",
-"рджреЛрдиреЛрдВ рддреНрдпреЛрд╣рд╛рд░ рдХреА рд░реЛрд╢рдиреА рд╕реЗ рд╕рдЬреА рд╕рдбрд╝рдХ рдкрд░ рд╕рд╛рде рдЪрд▓ рд░рд╣реЗ рд╣реИрдВ, рд╕реБрдВрджрд░ рдкрд╛рд░рдВрдкрд░рд┐рдХ рднрд╛рд░рддреАрдп рдкрд░рд┐рдзрд╛рди, glowing bokeh.",
-"рд▓рдбрд╝рдХрд╛ рд▓рдбрд╝рдХреА рдХреЛ рдЭреВрд▓реЗ рдкрд░ рдзреАрд░реЗ рд╕реЗ рдЭреБрд▓рд╛ рд░рд╣рд╛ рд╣реИ, рд╣рд░рд╛-рднрд░рд╛ рдкрд╛рд░реНрдХ, рд╣рдБрд╕реА рдФрд░ рдЦреБрд╢реА рдХрд╛ рдкрд▓.",
-"рджреЛрдиреЛрдВ рдкрд╣рд╛рдбрд╝реА viewpoint рдкрд░ рдПрдХ-рджреВрд╕рд░реЗ рдХреЛ рдЧрд▓реЗ рд▓рдЧрд╛рдП рджреВрд░ рдШрд╛рдЯреА рджреЗрдЦ рд░рд╣реЗ рд╣реИрдВ, dramatic clouds, cinematic landscape.",
-"рд▓рдбрд╝рдХреА рдЦрд┐рдбрд╝рдХреА рдХреЗ рдкрд╛рд╕ рдмреИрдареА рд╣реИ рдФрд░ рд▓рдбрд╝рдХрд╛ рдЙрд╕реЗ рдЪрд╛рдп рдХрд╛ рдХрдк рджреЗ рд░рд╣рд╛ рд╣реИ, рдмрд╛рд░рд┐рд╢ рдХреА рдмреВрдВрджреЗрдВ, cozy romantic interior.",
-"рджреЛрдиреЛрдВ рдлреВрд▓реЛрдВ рд╕реЗ рд╕рдЬреЗ рдордВрдбрдк рдХреЗ рдиреАрдЪреЗ рдПрдХ-рджреВрд╕рд░реЗ рдХрд╛ рд╣рд╛рде рдерд╛рдореЗ рдЦрдбрд╝реЗ рд╣реИрдВ, elegant festive outfits, dreamy lights.",
-"рдЕрдВрддрд┐рдо рджреГрд╢реНрдп: рджреЛрдиреЛрдВ рд╕реВрд░реНрдпрд╛рд╕реНрдд рдХреЗ рд╕рдордп рд╕рдореБрджреНрд░ рдХрд┐рдирд╛рд░реЗ рд╣рд╛рдереЛрдВ рдореЗрдВ рд╣рд╛рде рдбрд╛рд▓реЗ рджреВрд░ рдЬрд╛рддреЗ рд╣реБрдП, рд╕реБрдирд╣рд░реА рд░реЛрд╢рдиреА, emotional happy ending."
+"एक सुंदर भारतीय युवा वयस्क जोड़ा हरे-भरे रोमांटिक बगीचे में आमने-सामने खड़ा है। लड़का लड़की की आँखों में प्यार से देख रहा है, सुनहरी सुबह की रोशनी, cinematic photorealistic scene.",
+"दोनों बारिश में एक छतरी के नीचे करीब खड़े हैं, हल्की मुस्कान, सड़क पर पानी की चमक और शहर की रोशनी, romantic cinematic photography.",
+"लड़का लड़की को गुलाब दे रहा है, लड़की शर्माकर मुस्कुरा रही है, फूलों से सजा बगीचा, soft golden-hour lighting.",
+"दोनों झील के किनारे साथ चल रहे हैं, पानी में पहाड़ों का प्रतिबिंब, हवा में उड़ते बाल, wide cinematic shot.",
+"लड़की बालकनी में खड़ी है और लड़का नीचे से उसे देखकर मुस्कुरा रहा है, शाम का आसमान, warm romantic mood.",
+"दोनों समुद्र किनारे सूर्यास्त देख रहे हैं, लहरें पैरों को छू रही हैं, पीछे नारंगी आसमान, cinematic wide shot.",
+"लड़का लड़की के बालों में फूल लगा रहा है, दोनों के चेहरे पर कोमल मुस्कान, फूलों का सुंदर close-up.",
+"दोनों पहाड़ी रास्ते पर हाथ पकड़कर चल रहे हैं, धुंधले पहाड़ और बादल, dreamy travel scene.",
+"रात में छत पर दोनों तारों भरे आसमान के नीचे बैठे हैं, हल्की fairy lights, शांत और प्यारा पल.",
+"लड़की पियानो बजा रही है और लड़का पास बैठकर सुन रहा है, elegant indoor setting, warm light.",
+"दोनों रंग-बिरंगे फूलों के बीच हँसते हुए दौड़ रहे हैं, हवा में फूलों की पंखुड़ियाँ, joyful cinematic motion.",
+"लड़का लड़की को माथे पर प्यार से चूम रहा है, सुंदर बगीचा, respectful tender romantic moment.",
+"दोनों पुरानी सड़क पर vintage कार के पास खड़े हैं, शाम की रोशनी, classic Bollywood romance mood.",
+"लड़की नदी किनारे बैठी है और लड़का उसके पास बैठकर उसका हाथ थामे है, शांत प्राकृतिक दृश्य.",
+"दोनों त्योहार की रोशनी से सजी सड़क पर साथ चल रहे हैं, सुंदर पारंपरिक भारतीय परिधान, glowing bokeh.",
+"लड़का लड़की को झूले पर धीरे से झुला रहा है, हरा-भरा पार्क, हँसी और खुशी का पल.",
+"दोनों पहाड़ी viewpoint पर एक-दूसरे को गले लगाए दूर घाटी देख रहे हैं, dramatic clouds, cinematic landscape.",
+"लड़की खिड़की के पास बैठी है और लड़का उसे चाय का कप दे रहा है, बारिश की बूंदें, cozy romantic interior.",
+"दोनों फूलों से सजे मंडप के नीचे एक-दूसरे का हाथ थामे खड़े हैं, elegant festive outfits, dreamy lights.",
+"अंतिम दृश्य: दोनों सूर्यास्त के समय समुद्र किनारे हाथों में हाथ डाले दूर जाते हुए, सुनहरी रोशनी, emotional happy ending."
 ];
 const scenesEl=document.getElementById('scenes');
 let activeImage=null, currentScene=0;
-function addScene(text=defaults.length?defaults[scenesEl.children.length]:"рдЕрдкрдирд╛ scene prompt рд▓рд┐рдЦреЗрдВред"){
+function addScene(text=defaults.length?defaults[scenesEl.children.length]:"अपना scene prompt लिखें।"){
  const n=scenesEl.children.length+1, div=document.createElement('div');div.className='scene';
- div.innerHTML=`<div class="scenehead"><b>Scene ${n}</b><button class="secondary one" type="button">рдпрд╣ Scene рдмрдирд╛рдПрдВ</button></div><textarea aria-label="Scene ${n} prompt"></textarea>`;
- div.querySelector('textarea').value=text||"рдЕрдкрдирд╛ scene prompt рд▓рд┐рдЦреЗрдВред";
+ div.innerHTML=`<div class="scenehead"><b>Scene ${n}</b><button class="secondary one" type="button">यह Scene बनाएं</button></div><textarea aria-label="Scene ${n} prompt"></textarea>`;
+ div.querySelector('textarea').value=text||"अपना scene prompt लिखें।";
  div.querySelector('.one').onclick=()=>generateOne(n-1);
  scenesEl.appendChild(div);
 }
 defaults.forEach(addScene);
-document.getElementById('addScene').onclick=()=>addScene("рдЕрдкрдирд╛ рдирдпрд╛ scene prompt рд▓рд┐рдЦреЗрдВред");
+document.getElementById('addScene').onclick=()=>addScene("अपना नया scene prompt लिखें।");
 function showPreview(inputId,imgId){const f=document.getElementById(inputId).files[0];if(f){const im=document.getElementById(imgId);im.src=URL.createObjectURL(f);im.style.display='block';}}
 boy.onchange=()=>showPreview('boy','boyPrev');girl.onchange=()=>showPreview('girl','girlPrev');
 function openDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open('MyStoryStudioDB',1);r.onupgradeneeded=()=>r.result.createObjectStore('refs');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
 async function put(k,v){const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction('refs','readwrite');tx.objectStore('refs').put(v,k);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);});}
 async function get(k){const db=await openDB();return new Promise((res,rej)=>{const r=db.transaction('refs').objectStore('refs').get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
-async function loadRefs(){try{for(const k of ['boy','girl']){const f=await get(k);if(f){const dt=new DataTransfer();dt.items.add(f);document.getElementById(k).files=dt.files;showPreview(k,k+'Prev');}}document.getElementById('refStatus').textContent=(await get('boy')&&await get('girl'))?'рджреЛрдиреЛрдВ reference photos рдЗрд╕ рдореЛрдмрд╛рдЗрд▓ рдореЗрдВ рд╕реЗрд╡ рд╣реИрдВред':'Reference photos рд╕реЗрд╡ рдХрд░реЗрдВред';}catch(e){console.log(e)}}
-document.getElementById('saveRefs').onclick=async()=>{try{const b=boy.files[0],g=girl.files[0];if(!b||!g){alert('рдХреГрдкрдпрд╛ рджреЛрдиреЛрдВ photos рдЪреБрдиреЗрдВред');return;}await put('boy',b);await put('girl',g);document.getElementById('refStatus').textContent='рджреЛрдиреЛрдВ photos рд╕реЗрд╡ рд╣реЛ рдЧрдИрдВред';alert('Reference photos рд╕реЗрд╡ рд╣реЛ рдЧрдИрдВред');}catch(e){alert('рдлреЛрдЯреЛ рд╕реЗрд╡ рдирд╣реАрдВ рд╣реЛ рдкрд╛рдИрдВ: '+e.message)}};
-document.getElementById('clearRefs').onclick=async()=>{const db=await openDB();const tx=db.transaction('refs','readwrite');tx.objectStore('refs').clear();tx.oncomplete=()=>{boy.value='';girl.value='';boyPrev.style.display='none';girlPrev.style.display='none';refStatus.textContent='рд╕реЗрд╡ рдлреЛрдЯреЛ рд╣рдЯрд╛ рджреА рдЧрдИрдВред';};};
-async function refs(){let b=boy.files[0]||await get('boy'),g=girl.files[0]||await get('girl');if(!b||!g)throw Error('рдкрд╣рд▓реЗ рд▓рдбрд╝рдХреЗ рдФрд░ рд▓рдбрд╝рдХреА рдХреА рджреЛрдиреЛрдВ reference photos рдЕрдкрд▓реЛрдб рдХрд░рдХреЗ рд╕реЗрд╡ рдХрд░реЗрдВред');return [b,g];}
+async function loadRefs(){try{for(const k of ['boy','girl']){const f=await get(k);if(f){const dt=new DataTransfer();dt.items.add(f);document.getElementById(k).files=dt.files;showPreview(k,k+'Prev');}}document.getElementById('refStatus').textContent=(await get('boy')&&await get('girl'))?'दोनों reference photos इस मोबाइल में सेव हैं।':'Reference photos सेव करें।';}catch(e){console.log(e)}}
+document.getElementById('saveRefs').onclick=async()=>{try{const b=boy.files[0],g=girl.files[0];if(!b||!g){alert('कृपया दोनों photos चुनें।');return;}await put('boy',b);await put('girl',g);document.getElementById('refStatus').textContent='दोनों photos सेव हो गईं।';alert('Reference photos सेव हो गईं।');}catch(e){alert('फोटो सेव नहीं हो पाईं: '+e.message)}};
+document.getElementById('clearRefs').onclick=async()=>{const db=await openDB();const tx=db.transaction('refs','readwrite');tx.objectStore('refs').clear();tx.oncomplete=()=>{boy.value='';girl.value='';boyPrev.style.display='none';girlPrev.style.display='none';refStatus.textContent='सेव फोटो हटा दी गईं।';};};
+async function refs(){let b=boy.files[0]||await get('boy'),g=girl.files[0]||await get('girl');if(!b||!g)throw Error('पहले लड़के और लड़की की दोनों reference photos अपलोड करके सेव करें।');return [b,g];}
 async function generateOne(index){
  const cards=[...scenesEl.children], card=cards[index];if(!card)return;
- const prompt=card.querySelector('textarea').value.trim();if(!prompt){alert('Scene prompt рдЦрд╛рд▓реА рд╣реИред');return;}
+ const prompt=card.querySelector('textarea').value.trim();if(!prompt){alert('Scene prompt खाली है।');return;}
  try{
-  const [b,g]=await refs();status.textContent=`Scene ${index+1} рдмрди рд░рд╣рд╛ рд╣реИтАж рдХреГрдкрдпрд╛ рдкреНрд░рддреАрдХреНрд╖рд╛ рдХрд░реЗрдВред`;progress.style.display='block';
+  const [b,g]=await refs();status.textContent=`Scene ${index+1} बन रहा है… कृपया प्रतीक्षा करें।`;progress.style.display='block';
   const fd=new FormData();fd.append('boy',b,b.name||'boy-reference.jpg');fd.append('girl',g,g.name||'girl-reference.jpg');
   const title=storyTitle.value.trim();
   fd.append('prompt',`Create one separate, high-quality cinematic photorealistic image for scene ${index+1} of the story "${title}". Use the first reference photo as the male lead and the second reference photo as the female lead. Keep both characters' facial identity, facial structure, skin tone, age appearance and key facial features as consistent as possible with their references. Clothing, pose, expression, location and lighting may change to fit this scene. Do not combine multiple scenes or make a collage. Show only this single scene. Scene description: ${prompt}`);
   fd.append('model',model.value);fd.append('quality',quality.value);fd.append('size',size.value);
   const r=await fetch('/api/generate',{method:'POST',body:fd});let data={};try{data=await r.json()}catch{}
   if(!r.ok)throw Error(data.error||`Server error ${r.status}`);
-  activeImage=data.image;currentScene=index;result.src=activeImage;result.style.display='block';resultTitle.textContent=`${title} тАФ Scene ${index+1}`;download.disabled=false;
-  status.textContent=`Scene ${index+1} рддреИрдпрд╛рд░ рд╣реИред`;progress.value=index+1;
- }catch(e){status.textContent='рдЗрдореЗрдЬ рдирд╣реАрдВ рдмрди рдкрд╛рдИ: '+e.message;alert('рдЗрдореЗрдЬ рдирд╣реАрдВ рдмрди рдкрд╛рдИ:\\n'+e.message);}
+  activeImage=data.image;currentScene=index;result.src=activeImage;result.style.display='block';resultTitle.textContent=`${title} — Scene ${index+1}`;download.disabled=false;
+  status.textContent=`Scene ${index+1} तैयार है।`;progress.value=index+1;
+ }catch(e){status.textContent='इमेज नहीं बन पाई: '+e.message;alert('इमेज नहीं बन पाई:\\n'+e.message);}
 }
 document.getElementById('generateAll').onclick=async()=>{progress.max=scenesEl.children.length;progress.value=0;for(let i=0;i<scenesEl.children.length;i++){await generateOne(i);if(!activeImage)break;}};
 document.getElementById('download').onclick=()=>{if(!activeImage)return;const a=document.createElement('a');a.href=activeImage;a.download=`scene-${currentScene+1}.png`;a.click();};
 loadRefs();
-fetch('/api/health').then(r=>r.json()).then(d=>{if(!d.configured)status.textContent='Server рдЪрд▓ рд░рд╣рд╛ рд╣реИ, рд▓реЗрдХрд┐рди hosting рдореЗрдВ OPENAI_API_KEY рдЕрднреА рд╕реЗрдЯ рдирд╣реАрдВ рд╣реИред'}).catch(()=>status.textContent='Server connection рдЬрд╛рдБрдЪ рдирд╣реАрдВ рд╣реЛ рдкрд╛рдпрд╛ред рдЗрд╕ project рдХреЛ рдХреЗрд╡рд▓ local file рдХреА рддрд░рд╣ рдЦреЛрд▓рдиреЗ рдкрд░ API рдХрд╛рдо рдирд╣реАрдВ рдХрд░реЗрдЧрд╛; рдЗрд╕реЗ hosting рдкрд░ deploy рдХрд░рдирд╛ рд╣реЛрдЧрд╛ред');
+fetch('/api/health').then(r=>r.json()).then(d=>{if(!d.configured)status.textContent='Server चल रहा है, लेकिन hosting में OPENAI_API_KEY अभी सेट नहीं है।'}).catch(()=>status.textContent='Server connection जाँच नहीं हो पाया। इस project को केवल local file की तरह खोलने पर API काम नहीं करेगा; इसे hosting पर deploy करना होगा।');
 </script></body></html>
