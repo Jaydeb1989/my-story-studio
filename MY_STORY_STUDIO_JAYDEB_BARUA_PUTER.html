@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d1b">
+<title>MY STORY STUDIO — Jaydeb Barua</title>
+<script src="https://js.puter.com/v2/"></script>
+<style>
+:root{--bg:#090d1b;--panel:#121a2e;--line:#263451;--text:#f4f7ff;--muted:#aab6d0;--accent:#8b5cf6;--cyan:#22d3ee;--good:#34d399;--bad:#fb7185}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#1b2850 0,#090d1b 48%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+header{padding:25px 16px;text-align:center;border-bottom:1px solid var(--line);background:#090d1bd9;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+h1{font-size:clamp(23px,5vw,34px);margin:0 0 7px;letter-spacing:1px}header p{margin:0;color:var(--muted);font-size:13px}
+.wrap{width:min(980px,94%);margin:22px auto 60px}.card{background:linear-gradient(145deg,#151f36,#10182a);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 12px 35px #0003}
+h2{font-size:18px;margin:0 0 14px}.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{display:block;color:#dbe5ff;font-size:13px;margin:12px 0 7px}input,textarea,select{width:100%;background:#0b1222;border:1px solid #344363;border-radius:11px;color:white;padding:12px;font:inherit;outline:none}textarea{min-height:115px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
+button{border:0;border-radius:11px;padding:12px 16px;font-weight:700;cursor:pointer;color:white;background:linear-gradient(110deg,#7c3aed,#2563eb);margin:7px 5px 0 0}button.secondary{background:#263653;border:1px solid #405477}button.green{background:linear-gradient(110deg,#059669,#0e7490)}button:disabled{opacity:.5;cursor:not-allowed}
+.small{font-size:12px;color:var(--muted);line-height:1.5}.status{padding:12px;border-radius:10px;background:#0a1324;border:1px solid var(--line);color:#cbd5e1;margin-top:12px;white-space:pre-wrap;font-size:13px}
+.preview{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.preview img{width:86px;height:86px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.scene{border:1px solid var(--line);border-radius:14px;padding:14px;margin:13px 0;background:#0c1425}.scene h3{margin:0 0 8px;font-size:16px}.scene img,.scene video{width:100%;max-height:520px;object-fit:contain;background:#050914;border-radius:10px;margin-top:10px}.scene textarea{min-height:85px}.scene .actions{display:flex;flex-wrap:wrap;gap:5px}
+a.download{display:inline-block;color:#67e8f9;margin:8px 10px 0 0;font-size:13px}
+footer{text-align:center;color:#8190ae;font-size:12px;padding:20px}
+@media(max-width:620px){.row{grid-template-columns:1fr}.card{padding:14px}header{position:relative}}
+</style>
+</head>
+<body>
+<header>
+<h1>✨ MY STORY STUDIO</h1>
+<p>Created by Jaydeb Barua · AI Story, Image & Video Studio</p>
+</header>
+<main class="wrap">
+<section class="card">
+<h2>🔐 Puter AI Login</h2>
+<p class="small">AI चलाने के लिए अपने Puter खाते से साइन इन करें। इस वेबसाइट में OpenAI API Key की जरूरत नहीं है। Puter/Gemini की उपलब्धता, उपयोग-सीमा और संभावित शुल्क लागू हो सकते हैं।</p>
+<button id="loginBtn" onclick="login()">Puter में Login / Connect</button>
+<button class="secondary" onclick="checkLogin()">Login स्थिति जाँचें</button>
+<div id="loginStatus" class="status">स्थिति जाँची नहीं गई है।</div>
+</section>
+
+<section class="card">
+<h2>📝 1. अपनी कहानी बनाएँ</h2>
+<label for="idea">कहानी का विषय / आइडिया</label>
+<textarea id="idea" placeholder="उदाहरण: एक गरीब लड़का मेहनत करके बड़ा वैज्ञानिक बनता है..."></textarea>
+<div class="row">
+<div><label for="lang">कहानी की भाषा</label><select id="lang"><option>Hindi</option><option>English</option><option>Odia</option><option>Bengali</option></select></div>
+<div><label for="count">कितने दृश्य (Scenes)</label><select id="count"><option>5</option><option>6</option><option>8</option><option>10</option><option>12</option><option>15</option><option>20</option></select></div>
+</div>
+<label for="style">कहानी / चित्र की शैली</label>
+<select id="style"><option value="cinematic 3D animated cartoon">3D Cartoon / Animation</option><option value="realistic cinematic photography">Realistic Cinematic</option><option value="anime illustration">Anime</option><option value="storybook illustration">Storybook Illustration</option><option value="Indian folk art illustration">Indian Folk Art</option></select>
+<button id="storyBtn" onclick="makeStory()">✨ AI से कहानी और Scenes बनाएँ</button>
+<div id="storyStatus" class="status">पहले कहानी का विषय लिखें।</div>
+<div id="scenes"></div>
+</section>
+
+<section class="card">
+<h2>🧑‍🤝‍🧑 2. Character Reference Photos</h2>
+<p class="small">पूरी कहानी के लिए किरदारों की फोटो यहाँ एक बार अपलोड करें। यही फोटो सभी scenes में reference के रूप में इस्तेमाल होंगी। चेहरे/पहचान एक जैसी रखने की कोशिश होगी; कहानी के अनुसार कपड़े और background बदल सकते हैं। अधिकतम 3 फोटो।</p>
+<input id="refs" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+<div id="refPreview" class="preview"></div>
+</section>
+
+<section class="card">
+<h2>🎨 3. Image Settings — Puter / Gemini</h2>
+<div class="row">
+<div><label for="imageModel">Image AI Model</label><select id="imageModel">
+<option value="gemini-3.1-flash-image" selected>Gemini 3.1 Flash Image — तेज़</option>
+<option value="gemini-3-pro-image">Gemini 3 Pro Image — विस्तृत</option>
+</select></div>
+<div><label for="quality">Image Quality</label><select id="quality"><option selected>1K</option><option>2K</option><option>4K</option></select></div>
+<div><label for="ratio">Aspect Ratio</label><select id="ratio"><option value="16:9">16:9 Landscape</option><option value="9:16">9:16 Portrait</option><option value="1:1">1:1 Square</option><option value="4:3">4:3</option></select></div>
+<div><label for="videoModel">Video Model</label><select id="videoModel"><option value="togetherai:wan-ai/wan2.7-t2v">Wan 2.7</option><option value="google:veo-3.1">Google Veo 3.1</option><option value="kling:kling-2.6">Kling 2.6</option></select></div>
+</div>
+<p class="small">Image generation Puter के Gemini image model से होगी। 1K से शुरुआत करें। 2K/4K चुनने पर उपयोग/शुल्क बढ़ सकते हैं। Puter की उपलब्धता और खाते की सीमाएँ लागू होंगी।</p>
+</section>
+<section class="card">
+<h2>📥 4. सभी Images / Videos</h2>
+<button class="green" id="allImagesBtn" onclick="generateAllImages()" disabled>सभी Scenes की Images बनाएँ</button>
+<button class="secondary" id="allVideosBtn" onclick="generateAllVideos()" disabled>सभी Scenes के Videos बनाएँ</button>
+<div id="globalStatus" class="status">पहले कहानी बनाइए। फिर images या videos generate करें।</div>
+</section>
+</main>
+<footer>MY STORY STUDIO · Created by Jaydeb Barua · Puter/Gemini usage limits and charges may apply.</footer>
+<script>
+let storyScenes=[];
+let referenceFiles=[];
+const $=id=>document.getElementById(id);
+function status(id,msg){$(id).textContent=msg}
+function errText(e){return e?.message||e?.error?.message||String(e)}
+async function waitPuter(){
+  for(let i=0;i<40;i++){if(window.puter?.ai)return true;await new Promise(r=>setTimeout(r,250))}
+  throw new Error("Puter.js लोड नहीं हुआ। इंटरनेट जाँचें और वेबसाइट को Render की https लिंक से खोलें।");
+}
+async function checkLogin(){
+ try{await waitPuter();const ok=await puter.auth.isSignedIn();status("loginStatus",ok?"✅ Puter में Login है।":"अभी Login नहीं है। Login बटन दबाएँ।");return ok}
+ catch(e){status("loginStatus","❌ "+errText(e));return false}
+}
+async function login(){
+ const b=$("loginBtn");b.disabled=true;status("loginStatus","Puter Login खुल रहा है...");
+ try{await waitPuter();if(!await puter.auth.isSignedIn())await puter.auth.signIn();const ok=await puter.auth.isSignedIn();status("loginStatus",ok?"✅ Login सफल! अब AI features इस्तेमाल करें।":"Login पूरा नहीं हुआ। कृपया फिर कोशिश करें।")}
+ catch(e){status("loginStatus","❌ Login Error: "+errText(e)+"\nPopup/नया टैब खुलने की अनुमति दें और फिर कोशिश करें.")}
+ finally{b.disabled=false}
+}
+$("refs").addEventListener("change",e=>{
+ const files=Array.from(e.target.files||[]);
+ if(files.length>3){alert("अधिकतम 3 reference photos चुनें।");e.target.value="";referenceFiles=[]}
+ else referenceFiles=files;
+ $("refPreview").innerHTML="";
+ referenceFiles.forEach(f=>{const img=document.createElement("img");img.src=URL.createObjectURL(f);$("refPreview").appendChild(img)});
+});
+function extractText(resp){
+ if(typeof resp==="string")return resp;
+ if(resp?.message?.content){const c=resp.message.content;return Array.isArray(c)?c.map(x=>x.text||"").join("\n"):String(c)}
+ if(resp?.text)return resp.text;
+ return JSON.stringify(resp);
+}
+async function makeStory(){
+ const idea=$("idea").value.trim();if(!idea){alert("कहानी का विषय लिखें।");return}
+ const b=$("storyBtn");b.disabled=true;status("storyStatus","⏳ AI कहानी और scene descriptions तैयार कर रहा है...");
+ try{
+  await waitPuter();if(!await puter.auth.isSignedIn())await puter.auth.signIn();
+  const n=Number($("count").value),lang=$("lang").value,style=$("style").value;
+  const prompt=`Create an original ${lang} story based on: ${idea}
+Return ONLY valid JSON, no markdown, in this exact shape:
+{"title":"story title","scenes":[{"scene":1,"text":"short scene description in ${lang}","image_prompt":"Detailed image prompt in English. ${style}. Include camera, lighting, environment, character appearance, action. Keep recurring character facial identity consistent. Clothing may change naturally by scene."}]}
+Exactly ${n} scenes. Each scene should advance the story. image_prompt must be standalone and richly descriptive.`;
+  const response=await puter.ai.chat(prompt,{model:"gemini-3.5-flash-lite"});
+  let raw=extractText(response).trim().replace(/^```(?:json)?/i,"").replace(/```$/,"").trim();
+  const data=JSON.parse(raw);if(!Array.isArray(data.scenes)||data.scenes.length===0)throw new Error("AI ने scenes सही format में नहीं दिए। फिर कोशिश करें।");
+  storyScenes=data.scenes.slice(0,n).map((s,i)=>({...s,scene:i+1,imageUrl:null,videoUrl:null}));
+  renderScenes(data.title||"आपकी कहानी");
+  $("allImagesBtn").disabled=false;$("allVideosBtn").disabled=false;
+  status("storyStatus",`✅ कहानी तैयार: ${data.title||"आपकी कहानी"} · ${storyScenes.length} Scenes`);
+  status("globalStatus","कहानी तैयार है। अब सभी Scenes की Images बनाएँ या किसी एक Scene की image बनाएँ।");
+ }catch(e){status("storyStatus","❌ Story Error: "+errText(e)+"\nयदि Login canceled हो, Login बटन दबाकर Puter में sign in करें।")}
+ finally{b.disabled=false}
+}
+function renderScenes(title){
+ const box=$("scenes");box.innerHTML=`<h2 style="margin-top:20px">📖 ${escapeHtml(title)}</h2>`;
+ storyScenes.forEach((s,i)=>{
+  const d=document.createElement("div");d.className="scene";d.id="scene"+i;
+  d.innerHTML=`<h3>Scene ${i+1}</h3><label>कहानी का दृश्य</label><textarea id="text${i}">${escapeHtml(s.text||"")}</textarea><label>Image Prompt (English — edit कर सकते हैं)</label><textarea id="prompt${i}">${escapeHtml(s.image_prompt||"")}</textarea><div class="actions"><button onclick="generateImage(${i})">🎨 इस Scene की Image</button><button class="secondary" onclick="generateVideo(${i})">🎬 इस Scene का Video</button></div><div id="result${i}"></div>`;
+  box.appendChild(d);
+ });
+}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function ratioObj(v){const [w,h]=v.split(":").map(Number);return {w,h}}
+function scenePrompt(i){
+ const txt=$("prompt"+i).value.trim();
+ const identity=referenceFiles.length?"Use the uploaded reference photos as the identity references for recurring characters. Preserve each person's recognizable face, facial structure, hairstyle and age across every scene. Do not merge identities. Clothing, pose, expression, lighting and background may change to fit this scene. ":"";
+ return `${txt}. ${identity}High quality, coherent composition, no captions, no watermark.`;
+}
+async function ensureSigned(){await waitPuter();if(!await puter.auth.isSignedIn())await puter.auth.signIn()}
+async function generateImage(i){
+ const out=$("result"+i);out.textContent="⏳ Image बन रही है...";
+ try{
+  await ensureSigned();
+  const model=$("imageModel").value,q=$("quality").value;
+  const opts={model,provider:"gemini",ratio:ratioObj($("ratio").value),quality:q};
+  if(referenceFiles.length)opts.input_images=referenceFiles;
+  const img=await puter.ai.txt2img(scenePrompt(i),opts);
+  img.style.width="100%";img.style.maxHeight="520px";img.style.objectFit="contain";img.style.borderRadius="10px";
+  const url=img.src;storyScenes[i].imageUrl=url;
+  out.innerHTML="";out.appendChild(img);
+  const a=document.createElement("a");a.className="download";a.textContent="⬇ Download Image";a.href=url;a.download=`my-story-scene-${i+1}.png`;out.appendChild(a);
+ }catch(e){out.textContent="❌ Image Error: "+errText(e)}
+}
+async function generateVideo(i){
+ const out=$("result"+i);out.textContent="⏳ Video generation शुरू हो रहा है। इसमें समय लग सकता है...";
+ try{
+  await ensureSigned();
+  const opts={model:$("videoModel").value};
+  if(storyScenes[i].imageUrl)opts.input_image=storyScenes[i].imageUrl;
+  const video=await puter.ai.txt2vid(scenePrompt(i)+" Animate this scene naturally, cinematic camera movement, smooth motion.",opts);
+  const url=video instanceof HTMLVideoElement?(video.src||video.querySelector("source")?.src):String(video);
+  storyScenes[i].videoUrl=url;out.innerHTML="";
+  if(video instanceof HTMLVideoElement){video.controls=true;video.style.width="100%";out.appendChild(video)}
+  else{const v=document.createElement("video");v.controls=true;v.src=url;out.appendChild(v)}
+  const a=document.createElement("a");a.className="download";a.href=url;a.download=`my-story-scene-${i+1}.mp4`;a.textContent="⬇ Download Video";out.appendChild(a);
+ }catch(e){out.textContent="❌ Video Error: "+errText(e)}
+}
+async function generateAllImages(){
+ $("allImagesBtn").disabled=true;
+ try{for(let i=0;i<storyScenes.length;i++){status("globalStatus",`⏳ Scene ${i+1}/${storyScenes.length} की Image बन रही है...`);await generateImage(i)}status("globalStatus","✅ सभी Scenes की Image प्रक्रिया पूरी हुई।")}
+ finally{$("allImagesBtn").disabled=false}
+}
+async function generateAllVideos(){
+ $("allVideosBtn").disabled=true;
+ try{for(let i=0;i<storyScenes.length;i++){status("globalStatus",`⏳ Scene ${i+1}/${storyScenes.length} का Video बन रहा है...`);await generateVideo(i)}status("globalStatus","✅ सभी Scenes के Video प्रक्रिया पूरी हुई।")}
+ finally{$("allVideosBtn").disabled=false}
+}
+window.addEventListener("load",()=>{checkLogin()});
+</script>
+</body>
+</html>
